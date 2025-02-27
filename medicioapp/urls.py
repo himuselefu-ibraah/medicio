@@ -20,6 +20,11 @@ from  medicioapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('service', views.service, name='service'),
-    path('starter', views.starter, name='starter'),
+    path('service/', views.service, name='service'),
+    path('starter/', views.starter, name='starter'),
+    path('about/', views.about, name='about'),
+    path('services/', views.services, name='services'),
+    path('doctor/', views.doctor, name='doctor'),
+    path('department/', views.department, name='department'),
+    path('appointment/', views.appoint, name='appointment'),
 ]
