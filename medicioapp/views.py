@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from medicioapp.models import *
 
 # Create your views here.
 def index(request):
@@ -16,4 +17,18 @@ def doctor(request):
 def department(request):
     return render(request,'department.html')
 def appoint(request):
-    return render(request,'appointment form.html')
+    if request.method == "POST":
+        myappointments = Appointment(
+            name = request.POST['name'],
+            email = request.POST['email'],
+            phone = request.POST['phone'],
+            date = request.POST['date'],
+            department = request.POST['department'],
+            doctor = request.POST['doctor'],
+            message = request.POST['message']
+        )
+        myappointments.save()
+        return redirect('/appointment')
+    else:
+        return render(request,'appointment form.html')
+
