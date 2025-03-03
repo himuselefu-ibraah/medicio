@@ -46,13 +46,23 @@ class Appointment(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
     phone = models.CharField(max_length=100)
-    date = models.DateField()
+    date = models.DateTimeField()
     department = models.CharField(max_length=50)
     doctor =models.CharField(max_length=50)
     message = models.TextField()
 
     def __str__(self):
         return self.name
+
+class Address(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    subject = models.CharField(max_length=50)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
 
 
 
