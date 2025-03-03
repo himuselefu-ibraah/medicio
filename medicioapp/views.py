@@ -31,7 +31,7 @@ def appoint(request):
             message = request.POST['message']
         )
         myappointments.save()
-        return redirect('/appointment')
+        return redirect('/show')
     else:
         return render(request,'appointment form.html')
 
@@ -45,7 +45,15 @@ def contact(request):
 
         )
         myform.save()
-        return redirect('/Address')
+        return redirect('/contact')
     else:
         return render(request,'contact.html')
 
+def show(request):
+    all = Appointment.objects.all()
+    return render(request,'show.html',{'all':all})
+
+def delete(request,id):
+    deleteappointments=Appointment.objects.get(id=id)
+    deleteappointments.delete()
+    return redirect('/show')
